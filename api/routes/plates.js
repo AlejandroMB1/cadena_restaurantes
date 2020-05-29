@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const conection = require('../Database/queries');
+const conection = require('../../dal/queries');
 
 //Un plato tiene una lista de ingredientes y cantidades ademas de una descripcion y precio
 

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const conection = require('../Database/queries');
+const conection = require('../../dal/queries');
 
 // router.get('/create/:username/:password', async function(req, res) {
 //     var username = req.params.username;

@@ -1,0 +1,1 @@
+En este directorio van las entidades o modelos del sistema

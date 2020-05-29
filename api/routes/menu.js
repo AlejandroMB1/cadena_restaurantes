@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const DBManager = require('./DBManager');
-const conection = require('../Database/queries');
+const conection = require('../../dal/queries');
 //Un menu es una lista de platos
 
 router.get('/:menuName', (req, res) => {

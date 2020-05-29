@@ -1,4 +1,4 @@
-const mariadb = require('./conn');
+const mariadb = require('../config/conn');
 module.exports = {
 
     createNewUser : async function (nombres, apellidos, correo, contrasena, idRol){

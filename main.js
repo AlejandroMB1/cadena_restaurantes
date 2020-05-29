@@ -1,13 +1,13 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const dotenv = require('dotenv');
+
 const morgan = require('morgan');
-const conection = require('./Database/queries');
+const conection = require('./dal/queries');
 const router = express.Router();
 //initialize
 const app = express();
-dotenv.config();
+
 app.use(express.json());
 app.set('json spaces', 2);// Ojo con esto para conexion con front
 
@@ -22,11 +22,11 @@ app.use(cors());
 app.use(helmet());
 
 //Routes
-const menu = require('./routes/menu');
-const plates = require('./routes/plates');
-const users = require('./routes/users');
-const tables = require('./routes/tables');
-const ingredients = require('./routes/ingredients');
+const menu = require('./api/routes/menu');
+const plates = require('./api/routes/plates');
+const users = require('./api/routes/users');
+const tables = require('./api/routes/tables');
+const ingredients = require('./api/routes/ingredients');
 
 app.use('/menu', menu);
 app.use('/plates', plates);

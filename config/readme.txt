@@ -1,0 +1,1 @@
+En este directorio van las configuraciones generales del sistema
