@@ -1,0 +1,10 @@
+POST https://localhost:5020/ingredients/create
+Content-Type: application/json
+
+{
+	"name":"Ingrediente 1",
+	"description":"Descripcion de ingrediente 1",
+	"price": 25
+}
+
+# GET http://localhost:5020/ingredients/getAll
