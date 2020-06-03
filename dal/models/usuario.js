@@ -8,7 +8,11 @@ module.exports = (sequelize, DataTypes) => {
     idRol: DataTypes.INTEGER
   }, {});
   Usuario.associate = function(models) {
-    Usuario.belongsTo(models.Rol); 
+    Usuario.belongsTo(models.Rol);
+    Usuario.hasOne(models.Cliente, {
+      foreignKey : "idUsuario",
+      as : "Cliente"
+    }); 
   };
   return Usuario;
 };

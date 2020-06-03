@@ -34,17 +34,6 @@ app.use('/users', users);
 app.use('/tables', tables);
 app.use('/ingredients', ingredients);
 
-
-app.post('/', function(request, response){
-    console.log(request.body);      // your JSON
-    response.send("ok");    // echo the result back
-});
-
-app.get('/', (req, res) => {
-    console.log("GOLA");
-    res.send("Server Running!");
-});
-
 app.listen(PORT,() => {
     console.log("Server up and running!");
 });
