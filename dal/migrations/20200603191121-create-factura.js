@@ -22,14 +22,6 @@ module.exports = {
       },
       valorTotal: {
         type: Sequelize.FLOAT
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }
     });
   },

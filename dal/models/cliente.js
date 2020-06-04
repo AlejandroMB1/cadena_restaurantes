@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
     idUsuario: DataTypes.INTEGER
   }, {});
   Cliente.associate = function(models) {
-    Cliente.belongsTo(models.Usuario);
     Cliente.hasMany(models.Factura, {
       foreignKey : "idCliente",
       as : "Factura"

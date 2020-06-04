@@ -19,22 +19,6 @@ module.exports = {
       fechaNacimiento: {
         type: Sequelize.DATE
       },
-      idUsuario: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references:  {
-          model: 'Usuario',
-          key: 'id'
-        }
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
   },
   down: (queryInterface, Sequelize) => {

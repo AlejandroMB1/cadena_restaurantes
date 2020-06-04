@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey : "idPlatoFavorito",
       as : "Cliente"
     });
+    Plato.belongsToMany(models.Ingrediente, {
+      through: "PlatoXIngrediente",
+      as: "Ingrediente",
+      foreignKey : "idIngrediente"
+    });
   };
   return Plato;
 };
