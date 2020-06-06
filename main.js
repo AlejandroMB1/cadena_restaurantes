@@ -26,14 +26,21 @@ const plates = require('./api/routes/plates');
 const users = require('./api/routes/users');
 const tables = require('./api/routes/tables');
 const ingredients = require('./api/routes/ingredients');
+const bills = require('./api/routes/bill');
 
 app.use('/menu', menu);
 app.use('/plates', plates);
 app.use('/users', users);
 app.use('/tables', tables);
 app.use('/ingredients', ingredients);
+app.use('/bills', bills);
 
 app.listen(PORT,() => {
     console.log("Server up and running!");
 });
 
+// var dates = new Date();
+// dates.setMilliseconds(0);
+// dates.setSeconds(0);
+
+// console.log(dates.toISOString());

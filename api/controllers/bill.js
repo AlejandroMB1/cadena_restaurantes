@@ -4,10 +4,13 @@ module.exports = {
 
     createNewBill : async function(req, res) {
         var idEmpleado = req.body.idEmpleado;
-        var fecha = req.body.fecha;
         var descuento = req.body.descuento;
-        var idCliente = req.body.idCliente;
-        var result = await conection.createNewBill(idEmpleado, fecha, descuento, nombreCliente, cedula);
+        var nombreCliente = req.body.nombreCliente;
+        var cedula = req.body.cedula;
+        //var idPedido = req.body.idPedido;
+        //var valorTotal = await conection.calcularTotal(idPedido); //calcular con la tabla PedidoXPlato
+        var valorTotal = 25000
+        var result = await conection.createNewBill(idEmpleado, nombreCliente, cedula, descuento, valorTotal);
         if(result == 0){
             res.send("Error creating a bill")
         }

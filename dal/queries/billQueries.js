@@ -1,11 +1,12 @@
 const mariadb = require('../../config/conn');
 module.exports = {
 
-    createNewBill : async function (idEmpleado, fecha, descuento, nombreCliente){
+    createNewBill : async function (idEmpleado, nombreCliente, cedula, descuento, valorTotal){
         try {
             let conn = await mariadb.getConn();
-            let query ="INSERT INTO Factura(idEmpleado, fecha, descuento, nombreCliente, cedula) VALUES(?,?,?,?,?)";
-            let values = [nombres, apellidos, correo, contrasena, idRol];
+            let fecha = new Date();
+            let query ="INSERT INTO Factura(idEmpleado, fecha, nombreCliente, cedula, descuento, valorTotal) VALUES(?,?,?,?,?,?)";
+            let values = [idEmpleado, fecha, nombreCliente, cedula, descuento, valorTotal];
             let row = await conn.query(query,values);
             conn.end();
             return row.affectedRows;
@@ -17,7 +18,7 @@ module.exports = {
 
         try {
             let conn = await mariadb.getConn();
-            let row = await conn.query("SELECT * FROM Usuario;");
+            let row = await conn.query("SELECT * FROM Factura;");
             conn.end();
             return row;
 
