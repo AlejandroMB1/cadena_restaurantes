@@ -1,36 +1,39 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Usuario', {
+    return queryInterface.createTable('Empleado', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nombres: {
+      cargo: {
         type: Sequelize.STRING
       },
-      apellidos: {
+      direccion: {
         type: Sequelize.STRING
       },
-      correo: {
+      telefono: {
         type: Sequelize.STRING
       },
-      contrasena: {
-        type: Sequelize.STRING
+      fechaIngreso: {
+        type: Sequelize.DATE
       },
-      idRol: {
+      salario: {
+        type: Sequelize.FLOAT
+      },
+      idSucursal: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references:  {
-          model: 'Rol',
+          model: 'Sucursal',
           key: 'id'
         }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Usuario');
+    return queryInterface.dropTable('Empleado');
   }
 };

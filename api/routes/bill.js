@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const conection = require('../../dal/queries');
 const billControllers = require('../controllers/bill');
 
 router.post('/createBill', billControllers.createNewBill); 

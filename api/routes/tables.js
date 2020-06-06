@@ -2,7 +2,6 @@
 
 const express = require('express');
 const router = express.Router();
-const conection = require('../../dal/queries');
 //Un menu es una lista de platos
 
 router.get('/create', (req, res) => {

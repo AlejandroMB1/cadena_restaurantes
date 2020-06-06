@@ -16,10 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       as: "Factura",
       foreignKey : "idFactura"
     });
-    Plato.hasMany(models.Cliente, {
-      foreignKey : "idPlatoFavorito",
-      as : "Cliente"
-    });
     Plato.belongsToMany(models.Ingrediente, {
       through: "PlatoXIngrediente",
       as: "Ingrediente",

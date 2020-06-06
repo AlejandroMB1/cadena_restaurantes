@@ -1,32 +1,30 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('MenuXPlato', {
+    return queryInterface.createTable('PagoNomina', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idMenu: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references:  {
-          model: 'Menu',
-          key: 'id'
-        }
+      fechaPago: {
+        type: Sequelize.DATE
       },
-      idPlato: {
+      valor: {
+        type: Sequelize.FLOAT
+      },
+      idEmpleado: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references:  {
-          model: 'Plato',
+          model: 'Empleado',
           key: 'id'
         }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('MenuXPlatos');
+    return queryInterface.dropTable('PagoNomina');
   }
 };

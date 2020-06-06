@@ -14,8 +14,11 @@ module.exports = {
       fecha: {
         type: Sequelize.DATE
       },
-      idCliente: {
-        type: Sequelize.INTEGER
+      nombreCliente: {
+        type: Sequelize.STRING
+      },
+      cedula: {
+        type: Sequelize.STRING
       },
       descuento: {
         type: Sequelize.FLOAT
@@ -26,6 +29,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Facturas');
+    return queryInterface.dropTable('Factura');
   }
 };

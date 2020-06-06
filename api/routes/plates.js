@@ -1,7 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const conection = require('../../dal/queries');
-
 //Un plato tiene una lista de ingredientes y cantidades ademas de una descripcion y precio
 
 router.post('/create', (req, res) => {

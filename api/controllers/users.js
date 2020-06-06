@@ -1,4 +1,4 @@
-const conection = require('../../dal/queries');
+const conection = require('../../dal/queries/UserQueries');
 
 module.exports = {
     createNewUser :async function (req, res) {

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Menu', {
+    return queryInterface.createTable('CadenaRestaurante', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,12 +11,12 @@ module.exports = {
       nombre: {
         type: Sequelize.STRING
       },
-      fechaCreacion: {
-        type: Sequelize.DATE
+      nombreCEO: {
+        type: Sequelize.STRING
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Menus');
+    return queryInterface.dropTable('CadenaRestaurante');
   }
 };

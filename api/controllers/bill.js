@@ -1,4 +1,4 @@
-const conection = require('../../dal/queries');
+const conection = require('../../dal/queries/billQueries');
 
 module.exports = {
 
@@ -7,7 +7,7 @@ module.exports = {
         var fecha = req.body.fecha;
         var descuento = req.body.descuento;
         var idCliente = req.body.idCliente;
-        var result = await conection.createNewBill(idEmpleado, fecha, descuento, idCliente);
+        var result = await conection.createNewBill(idEmpleado, fecha, descuento, nombreCliente, cedula);
         if(result == 0){
             res.send("Error creating a bill")
         }
@@ -55,6 +55,4 @@ module.exports = {
             res.send("successful")
         }
     }
-
-
 }

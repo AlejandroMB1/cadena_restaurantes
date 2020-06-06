@@ -3,7 +3,6 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const morgan = require('morgan');
-const conection = require('./dal/queries');
 const router = express.Router();
 //initialize
 const app = express();

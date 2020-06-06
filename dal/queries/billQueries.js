@@ -1,10 +1,10 @@
-const mariadb = require('../config/conn');
+const mariadb = require('../../config/conn');
 module.exports = {
 
-    createNewUser : async function (nombres, apellidos, correo, contrasena, idRol){
+    createNewBill : async function (idEmpleado, fecha, descuento, nombreCliente){
         try {
             let conn = await mariadb.getConn();
-            let query ="INSERT INTO Usuario(nombres, apellidos, correo, contrasena, idRol) VALUES(?,?,?,?,?)";
+            let query ="INSERT INTO Factura(idEmpleado, fecha, descuento, nombreCliente, cedula) VALUES(?,?,?,?,?)";
             let values = [nombres, apellidos, correo, contrasena, idRol];
             let row = await conn.query(query,values);
             conn.end();
@@ -13,7 +13,7 @@ module.exports = {
             console.log(error);
         }
     },
-    getAllUsers : async function (){
+    getAllBill : async function (){
 
         try {
             let conn = await mariadb.getConn();
@@ -26,7 +26,7 @@ module.exports = {
         }
     },
 
-    getUserById : async function(id){
+    getBillById : async function(id){
         let conn = await mariadb.getConn();
         let query = "SELECT * FROM Usuario WHERE idUsuario = ?";
         let value = [id];
@@ -35,15 +35,7 @@ module.exports = {
         return row;
     },
 
-    getUserByName : async function(name){
-        let conn = await mariadb.getConn();
-        let query = "SELECT * FROM Usuario WHERE nombres = ?";
-        let value = [name];
-        let row = await conn.query(query, value); 
-        conn.end();
-        return row;
-    },
-    updateUser : async function(id, name, last, pass){
+    updateBill : async function(id, name, last, pass){
         let conn = await mariadb.getConn();
         let query = "UPDATE Usuario SET nombres = ?, apellidos = ?, contrasena = ? WHERE idUsuario = ?";
         let value = [name, last, pass, id]
@@ -51,7 +43,7 @@ module.exports = {
         conn.end();
         return row.affectedRows;
     },
-    deleteUser : async function(id){
+    deleteBill : async function(id){
         let conn = await mariadb.getConn();
         let query = "DELETE FROM Usuario WHERE idUsuario = ?";
         let value = [id]

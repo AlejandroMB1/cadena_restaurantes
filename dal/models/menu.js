@@ -2,7 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   const Menu = sequelize.define('Menu', {
     nombre: DataTypes.STRING,
-    fechaCreacion: DataTypes.DATE
+    fechaCreacion: DataTypes.DATE,
+    idCadenaRestaurante : DataTypes.INTEGER
   }, {});
   Menu.associate = function(models) {
     Menu.belongsToMany(models.Plato, {
@@ -10,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       as: "Plato",
       foreignKey : "idMenu"
     });
+    Menu.belongsTo(models.CadenaRestaurante);
   };
   return Menu;
 };

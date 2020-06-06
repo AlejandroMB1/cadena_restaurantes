@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const usersControllers = require('../controllers/users');
-const conection = require('../../dal/queries');
 
 router.post('/create', usersControllers.createNewUser);
 

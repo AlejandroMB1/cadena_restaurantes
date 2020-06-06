@@ -1,32 +1,44 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('FacturaXPlato', {
+    return queryInterface.createTable('Sucursal', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idFactura: {
+      nombre: {
+        type: Sequelize.STRING
+      },
+      direccion: {
+        type: Sequelize.STRING
+      },
+      telefono: {
+        type: Sequelize.STRING
+      },
+      redSocial: {
+        type: Sequelize.STRING
+      },
+      idCadenaRestaurante: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references:  {
-          model: 'Factura',
+          model: 'CadenaRestaurante',
           key: 'id'
         }
       },
-      idPlato: {
+      idCiudad: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references:  {
-          model: 'Plato',
+          model: 'Ciudad',
           key: 'id'
         }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('FacturaXPlatos');
+    return queryInterface.dropTable('Sucursal');
   }
 };
