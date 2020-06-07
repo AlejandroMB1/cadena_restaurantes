@@ -12,10 +12,10 @@ module.exports = {
             return row.affectedRows;
         } catch (error) {
             console.log(error);
+            return 0;
         }
     },
     getAllBill : async function (){
-
         try {
             let conn = await mariadb.getConn();
             let row = await conn.query("SELECT * FROM Factura;");
@@ -28,28 +28,42 @@ module.exports = {
     },
 
     getBillById : async function(id){
-        let conn = await mariadb.getConn();
-        let query = "SELECT * FROM Usuario WHERE idUsuario = ?";
-        let value = [id];
-        let row = await conn.query(query, value); 
-        conn.end();
-        return row;
+        try {
+            let conn = await mariadb.getConn();
+            let query = "SELECT * FROM Factura WHERE id = ?";
+            let value = [id];
+            let row = await conn.query(query, value); 
+            conn.end();
+            return row;
+        }catch(error){
+            console.log(error)
+        }
     },
 
-    updateBill : async function(id, name, last, pass){
-        let conn = await mariadb.getConn();
-        let query = "UPDATE Usuario SET nombres = ?, apellidos = ?, contrasena = ? WHERE idUsuario = ?";
-        let value = [name, last, pass, id]
-        let row = await conn.query(query, value); 
-        conn.end();
-        return row.affectedRows;
+    updateBill : async function(id, idEmpleado, nombreCliente, cedula, descuento, valorTotal){
+        try{
+            let conn = await mariadb.getConn();
+            let query = "UPDATE Factura SET idEmpleado = ?, nombreCliente = ?, cedula = ?, descuento = ?, valorTotal = ? WHERE id = ?";
+            let value = [idEmpleado, nombreCliente, cedula, descuento, valorTotal, id]
+            let row = await conn.query(query, value); 
+            conn.end();
+            return row.affectedRows;
+        } catch(error){
+            console.log(error);
+            return 0
+        }
     },
     deleteBill : async function(id){
-        let conn = await mariadb.getConn();
-        let query = "DELETE FROM Usuario WHERE idUsuario = ?";
-        let value = [id]
-        let row = await conn.query(query, value); 
-        conn.end();
-        return row.affectedRows;
+        try{
+            let conn = await mariadb.getConn();
+            let query = "DELETE FROM Factura WHERE id = ?";
+            let value = [id]
+            let row = await conn.query(query, value); 
+            conn.end();
+            return row.affectedRows;
+        } catch(error){
+            console.log(error);
+            return 0
+        }
     }
 }

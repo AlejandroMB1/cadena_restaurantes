@@ -9,10 +9,10 @@ module.exports = {
         var idRol = req.body.idRol;
         var result =  await conection.createNewUser(nombres, apellidos, correo, contrasena, idRol);
         if(result == 0){
-            res.send("Error creating user account")
+            res.sendStatus(400);
         }
         else{
-            res.send("successful")
+            res.sendStatus(201);
         }
     },
 
@@ -32,7 +32,8 @@ module.exports = {
         else{
             usuarios = await conection.getUserById(idOrName);
             res.send(JSON.stringify(usuarios, null, 4));
-        }  
+        }
+        res.sendStatus(400);  
     },
 
     updateUser : async function(req, res) {
@@ -42,10 +43,10 @@ module.exports = {
         var contrasena = req.body.contrasena;
         var result =  await conection.updateUser(id, nombres, apellidos, contrasena);
         if(result == 0){
-            res.send("Error updating data")
+            res.sendStatus(400);  
         }
         else{
-            res.send("successful")
+            res.sendStatus(200);  
         }
     },
 
@@ -53,10 +54,10 @@ module.exports = {
         var id = req.params.id;
         var result =  await conection.deleteUser(id);
         if(result == 0){
-            res.send("Error deleting user")
+            res.sendStatus(400);
         }
         else{
-            res.send("successful")
+            res.sendStatus(200);
         }
     }
 

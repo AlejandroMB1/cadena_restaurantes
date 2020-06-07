@@ -11,6 +11,7 @@ module.exports = {
             return row.affectedRows;
         } catch (error) {
             console.log(error);
+            return 0;
         }
     },
     getAllUsers : async function (){
@@ -27,36 +28,54 @@ module.exports = {
     },
 
     getUserById : async function(id){
-        let conn = await mariadb.getConn();
-        let query = "SELECT * FROM Usuario WHERE idUsuario = ?";
-        let value = [id];
-        let row = await conn.query(query, value); 
-        conn.end();
-        return row;
+        try{
+            let conn = await mariadb.getConn();
+            let query = "SELECT * FROM Usuario WHERE id = ?";
+            let value = [id];
+            let row = await conn.query(query, value); 
+            conn.end();
+            return row;
+        }catch(error){
+            console.log(error);
+        }
     },
 
     getUserByName : async function(name){
-        let conn = await mariadb.getConn();
-        let query = "SELECT * FROM Usuario WHERE nombres = ?";
-        let value = [name];
-        let row = await conn.query(query, value); 
-        conn.end();
-        return row;
+        try{
+            let conn = await mariadb.getConn();
+            let query = "SELECT * FROM Usuario WHERE nombres = ?";
+            let value = [name];
+            let row = await conn.query(query, value); 
+            conn.end();
+            return row;
+        } catch(error){
+            console.log(error);
+        }
     },
     updateUser : async function(id, name, last, pass){
-        let conn = await mariadb.getConn();
-        let query = "UPDATE Usuario SET nombres = ?, apellidos = ?, contrasena = ? WHERE idUsuario = ?";
-        let value = [name, last, pass, id]
-        let row = await conn.query(query, value); 
-        conn.end();
-        return row.affectedRows;
+        try{
+            let conn = await mariadb.getConn();
+            let query = "UPDATE Usuario SET nombres = ?, apellidos = ?, contrasena = ? WHERE id = ?";
+            let value = [name, last, pass, id]
+            let row = await conn.query(query, value); 
+            conn.end();
+            return row.affectedRows;
+        } catch(error){
+            console.log(error);
+            return 0
+        }
     },
     deleteUser : async function(id){
-        let conn = await mariadb.getConn();
-        let query = "DELETE FROM Usuario WHERE idUsuario = ?";
-        let value = [id]
-        let row = await conn.query(query, value); 
-        conn.end();
-        return row.affectedRows;
+        try{
+            let conn = await mariadb.getConn();
+            let query = "DELETE FROM Usuario WHERE id = ?";
+            let value = [id]
+            let row = await conn.query(query, value); 
+            conn.end();
+            return row.affectedRows;
+        }catch(error){
+            console.log(error);
+            return 0;
+        }
     }
 }
