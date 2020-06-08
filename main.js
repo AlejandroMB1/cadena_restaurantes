@@ -24,15 +24,15 @@ app.use(helmet());
 const menu = require('./api/routes/menu');
 const plates = require('./api/routes/plates');
 const users = require('./api/routes/users');
-const tables = require('./api/routes/tables');
-const ingredients = require('./api/routes/ingredients');
+const pedidos = require('./api/routes/pedido');
+//const ingredients = require('./api/routes/ingredients');
 const bills = require('./api/routes/bill');
 
 app.use('/menu', menu);
 app.use('/plates', plates);
 app.use('/users', users);
-app.use('/tables', tables);
-app.use('/ingredients', ingredients);
+app.use('/pedidos', pedidos);
+//app.use('/ingredients', ingredients);
 app.use('/bills', bills);
 
 app.listen(PORT,() => {
