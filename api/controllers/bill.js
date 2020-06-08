@@ -33,8 +33,7 @@ module.exports = {
         else{
             bill = await conection.getBillById(id);
             res.send(JSON.stringify(bill, null, 4));
-        }
-        res.sendStatus(400)  
+        } 
     },
 
     updateBill : async function(req, res) {
@@ -44,7 +43,7 @@ module.exports = {
         var nombreCliente = req.body.nombreCliente;
         var cedula = req.body.cedula;
         var valorTotal = req.body.valorTotal;
-        var result =  await conection.updateBill(id, idEmpleado, nombreCliente, cedula, descuento, valorTotal);
+        var result =  await conection.updateBill(id, nombreCliente, cedula, descuento, valorTotal);
         if(result == 0){
             res.sendStatus(400)
         }

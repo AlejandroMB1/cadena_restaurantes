@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     Ingrediente.belongsToMany(models.Plato, {
       through: "PlatoXIngrediente",
       as: "Plato",
-      foreignKey : "idPlato"
+      foreignKey : "idIngrediente"
     });
   };
   return Ingrediente;

@@ -14,12 +14,17 @@ module.exports = (sequelize, DataTypes) => {
     Plato.belongsToMany(models.Factura, {
       through: "FacturaXPlato",
       as: "Factura",
-      foreignKey : "idFactura"
+      foreignKey : "idPlato"
     });
     Plato.belongsToMany(models.Ingrediente, {
       through: "PlatoXIngrediente",
       as: "Ingrediente",
-      foreignKey : "idIngrediente"
+      foreignKey : "idPlato"
+    });
+    Plato.belongsToMany(models.Pedido, {
+      through: "PedidoXPlato",
+      as: "Pedido",
+      foreignKey : "idPlato"
     });
   };
   return Plato;

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     Factura.belongsToMany(models.Platos, {
       through: "FacturaXPlato",
       as: "Plato",
-      foreignKey : "idPlato"
+      foreignKey : "idFactura"
     });
   };
   return Factura;

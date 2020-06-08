@@ -1,31 +1,13 @@
 const express = require('express')
 const router = express.Router()
-//Un plato tiene una lista de ingredientes y cantidades ademas de una descripcion y precio
+const IngredientsControllers = require('../controllers/Ingredients');
 
-router.post('/create', async (req, res) => {
-    try {
-        let newIngredient = await DBManager.createIngredient(req.body);        
-        res.status(201).json(newIngredient);
-    } catch (error) {
-        res.status(400).json({message:error.message});
-    }
-});
+router.post('/create', IngredientsControllers.createNewIngredient);
 
-router.get('/getAll', async (req, res) => {
-    try {
-        const ingredients = await DBManager.getAllIngedients();
-        res.json(ingredients);
-    } catch (error) {
-        res.status(500).json({message:error.message});
-    }
-});
+router.get('/getIngredient/:idOrName?', IngredientsControllers.getIngredient);
 
-router.delete('/delete/:ingredientId', (req, res) => {
-    res.send("Server Running!");
-});
+router.put('/update', IngredientsControllers.updateIngredient);
 
-router.get('/get/:ingredientId', (req, res) => {
-    res.send("Server Running!");
-});
+router.delete('/delete/:id',IngredientsControllers.deleteIngredient);
 
 module.exports = router;

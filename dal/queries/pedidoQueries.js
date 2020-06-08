@@ -1,12 +1,13 @@
 const mariadb = require('../../config/conn');
+
 module.exports = {
 
-    createNewBill : async function (idEmpleado, nombreCliente, cedula, descuento, valorTotal){
+    createNewPedido : async function (idEmpleado){
         try {
             let conn = await mariadb.getConn();
             let fecha = new Date();
-            let query ="INSERT INTO Factura(idEmpleado, fecha, nombreCliente, cedula, descuento, valorTotal) VALUES(?,?,?,?,?,?)";
-            let values = [idEmpleado, fecha, nombreCliente, cedula, descuento, valorTotal];
+            let query ="INSERT INTO Pedido(idEmpleado, fecha) VALUES(?,?)";
+            let values = [idEmpleado, fecha];
             let row = await conn.query(query,values);
             conn.end();
             return row.affectedRows;
@@ -15,10 +16,10 @@ module.exports = {
             return 0;
         }
     },
-    getAllBill : async function (){
+    getAllPedido : async function (){
         try {
             let conn = await mariadb.getConn();
-            let row = await conn.query("SELECT * FROM Factura;");
+            let row = await conn.query("SELECT * FROM Pedido;");
             conn.end();
             return row;
 
@@ -27,10 +28,10 @@ module.exports = {
         }
     },
 
-    getBillById : async function(id){
+    getPedidoById : async function(id){
         try {
             let conn = await mariadb.getConn();
-            let query = "SELECT * FROM Factura WHERE id = ?";
+            let query = "SELECT * FROM Pedido WHERE id = ?";
             let value = [id];
             let row = await conn.query(query, value); 
             conn.end();
@@ -40,11 +41,11 @@ module.exports = {
         }
     },
 
-    updateBill : async function(id, nombreCliente, cedula, descuento, valorTotal){
+    updatePedido : async function(id, fecha){
         try{
             let conn = await mariadb.getConn();
-            let query = "UPDATE Factura SET nombreCliente = ?, cedula = ?, descuento = ?, valorTotal = ? WHERE id = ?";
-            let value = [nombreCliente, cedula, descuento, valorTotal, id]
+            let query = "UPDATE Pedido SET fecha = ? WHERE id = ?";
+            let value = [fecha, id]
             let row = await conn.query(query, value); 
             conn.end();
             return row.affectedRows;
@@ -53,10 +54,10 @@ module.exports = {
             return 0
         }
     },
-    deleteBill : async function(id){
+    deletePedido : async function(id){
         try{
             let conn = await mariadb.getConn();
-            let query = "DELETE FROM Factura WHERE id = ?";
+            let query = "DELETE FROM Pedido WHERE id = ?";
             let value = [id]
             let row = await conn.query(query, value); 
             conn.end();

@@ -1,13 +1,13 @@
-const express = require('express');
-const router = express.Router();
-//Un menu es una lista de platos
+const express = require('express')
+const router = express.Router()
+const menuControllers = require('../controllers/menu');
 
-router.get('/:menuName', (req, res) => {
-    res.send("MenuName");
-});
+router.post('/create', menuControllers.createNewMenu);
 
-router.get('/:menuId', (req, res) => {
-    res.send("Server Running!");
-});
+router.get('/getMenu/:idOrName?', menuControllers.getMenu);
+
+router.put('/update', menuControllers.updateMenu);
+
+router.delete('/delete/:id',menuControllers.deleteMenu);
 
 module.exports = router;

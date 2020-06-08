@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       as : "PagoNomina"
     });
     Empleado.belongsTo(models.Sucursal);
+    Empleado.hasMany(models.Pedido, {
+      foreignKey : "idEmpleado",
+      as : "Pedido"
+    });
   };
   return Empleado;
 };

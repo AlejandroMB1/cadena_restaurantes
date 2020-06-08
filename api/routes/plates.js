@@ -1,27 +1,14 @@
 const express = require('express')
 const router = express.Router()
+const platesControllers = require('../controllers/plates');
 //Un plato tiene una lista de ingredientes y cantidades ademas de una descripcion y precio
 
-router.post('/create', (req, res) => {
-    //envia un json del plato
-    res.send("Plato Creado");
-});
+router.post('/create', platesControllers.createNewPlate);
 
-router.get('/plates/getAll', (req, res) => {
-    res.send("Server Running!");
-});
+router.get('/getPlate/:id?', platesControllers.getPlate);
 
-router.get('/plates/delete/:plateId', (req, res) => {
-    res.send("Server Running!");
-});
+router.delete('/delete/:id', platesControllers.deletePlate);
 
-router.get('/plates/get/:plateId', (req, res) => {
-    res.send("Server Running!");
-});
-
-router.post('/plates/update/:plateId', (req, res) => {
-    //Envia un json del plato
-    res.send("Server Running!");
-});
+router.put('/update', platesControllers.updatePlate);
 
 module.exports = router;

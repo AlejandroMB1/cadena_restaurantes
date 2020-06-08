@@ -33,7 +33,6 @@ module.exports = {
             usuarios = await conection.getUserById(idOrName);
             res.send(JSON.stringify(usuarios, null, 4));
         }
-        res.sendStatus(400);  
     },
 
     updateUser : async function(req, res) {

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Factura', {
+    return queryInterface.createTable('Pedido', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -18,22 +18,10 @@ module.exports = {
       },
       fecha: {
         type: Sequelize.DATE
-      },
-      nombreCliente: {
-        type: Sequelize.STRING
-      },
-      cedula: {
-        type: Sequelize.STRING
-      },
-      descuento: {
-        type: Sequelize.FLOAT
-      },
-      valorTotal: {
-        type: Sequelize.FLOAT
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Factura');
+    return queryInterface.dropTable('Pedido');
   }
 };
