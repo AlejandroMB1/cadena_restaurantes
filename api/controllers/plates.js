@@ -28,7 +28,7 @@ module.exports = {
         }
         else{
             plate = await conection.getPlateById(id);
-            res.send(JSON.stringify(plate));
+            res.send(JSON.stringify(plate[0]));
         } 
     },
 
