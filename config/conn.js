@@ -11,9 +11,11 @@ var pool =  mariadb.createPool({
         database: process.env.DB_DATABASE,
         connectionLimit: process.env.DB_CONNECTIONLIMIT  
     })
+    
 
 async function getConn(){ //función que asigna una conexión (de las 50 establecidas) a la sesión del usuario
     let conn = await pool.getConnection();
+    console.log("pase por aqui");
     return conn;
 } 
 

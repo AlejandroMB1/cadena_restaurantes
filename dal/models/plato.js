@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Plato = sequelize.define('Plato', {
     nombre: DataTypes.STRING,
     valor: DataTypes.FLOAT,
-    descripcion: DataTypes.TEXT
+    descripcion: DataTypes.STRING
   }, {});
   Plato.associate = function(models) {
     Plato.belongsToMany(models.Menu, {

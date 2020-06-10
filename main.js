@@ -38,9 +38,3 @@ app.use('/bills', bills);
 app.listen(PORT,() => {
     console.log("Server up and running!");
 });
-
-// var dates = new Date();
-// dates.setMilliseconds(0);
-// dates.setSeconds(0);
-
-// console.log(dates.toISOString());
