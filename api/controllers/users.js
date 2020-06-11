@@ -20,7 +20,7 @@ module.exports = {
         var idOrName = req.params.idOrName;
         var usuarios;
         res.setHeader('Content-Type', 'application/json');
-        console.log(idOrName);
+        //console.log(idOrName);
         if (idOrName == undefined){
             usuarios = await conection.getAllUsers();
             res.send(JSON.stringify(usuarios, null, 4));
@@ -58,6 +58,15 @@ module.exports = {
         else{
             res.sendStatus(200);
         }
+    },
+    login : async function(req, res) {
+        var correo = req.body.correo;
+        var contra = req.body.contrasena;
+        var result =  await conection.login(correo, contra);
+        if (result == 0){
+            res.sendStatus(404);;    
+        }
+        res.sendStatus(200);;
     }
 
 }

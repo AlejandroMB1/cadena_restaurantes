@@ -1,4 +1,5 @@
 const mariadb = require('../../config/conn');
+const { login } = require('../../api/controllers/users');
 module.exports = {
 
     createNewUser : async function (nombres, apellidos, correo, contrasena, idRol){
@@ -76,6 +77,18 @@ module.exports = {
         }catch(error){
             console.log(error);
             return 0;
+        }
+    },
+    login : async function(correo, contra){
+        try{
+            let conn = await mariadb.getConn();
+            let query = "SELECT count(*) as cuenta FROM Usuario WHERE correo = ? and contrasena = ?";
+            let value = [correo, contra];
+            let row = await conn.query(query, value);
+            conn.end();
+            return row[0].cuenta;
+        }catch(error){
+            console.log(error);
         }
     }
 }
