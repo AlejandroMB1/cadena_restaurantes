@@ -32,6 +32,9 @@ module.exports = {
         }
         else{
             bill = await conection.getBillById(id);
+            if (bill[0] == undefined){
+                res.sendStatus(404);
+            }
             res.send(JSON.stringify(bill, null, 4));
         } 
     },

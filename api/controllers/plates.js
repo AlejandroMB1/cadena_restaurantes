@@ -28,6 +28,9 @@ module.exports = {
         }
         else{
             plate = await conection.getPlateById(id);
+            if (plate[0] == undefined){
+                res.sendStatus(404);
+            }
             res.send(JSON.stringify(plate[0]));
         } 
     },

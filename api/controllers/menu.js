@@ -27,6 +27,9 @@ module.exports = {
         }
         else{
             menu = await conection.getMenuById(id);
+            if (menu[0] == undefined){
+                res.sendStatus(404);
+            }
             res.send(JSON.stringify(menu, null, 4));
         }
     },

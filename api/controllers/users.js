@@ -27,10 +27,16 @@ module.exports = {
         }
         else if (isNaN(idOrName)){
             usuarios = await conection.getUserByName(idOrName);
+            if (usuarios[0] == undefined){
+                res.sendStatus(404);
+            }
             res.send(JSON.stringify(usuarios, null, 4));
         }
         else{
             usuarios = await conection.getUserById(idOrName);
+            if (usuarios[0] == undefined){
+                res.sendStatus(404);
+            }
             res.send(JSON.stringify(usuarios, null, 4));
         }
     },
